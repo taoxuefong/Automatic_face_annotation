@@ -1,0 +1,9 @@
+yolov9目录下detect.py和detect_onnx.py是人脸检测调用文件
+detect.py加载pt模型，detect_onnx.py加载onnx模型
+调用接口方法两个文件相同，仅仅加载模型代码部分不同。
+模型在yolov9目录下
+
+推理速度：一张1024x1536的照片大约0.15秒，可输入不同分辨率图片。
+
+c语言端调用接口方法：首先调用一次init（）方法，即可初始化全局变量和加载模型，无需重复加载。然后根据需求可多次调用inference（）方法，输入参数为cv2.imread(image_path, cv2.IMREAD_COLOR)格式，
+输出为人脸坐标列表，每个元素为一个长度为4的数组result[],其中result[0]代表坐上角x轴,result[1]代表左上角y轴,result[2]代表右下角x轴,result[3]代表右下角y轴。
